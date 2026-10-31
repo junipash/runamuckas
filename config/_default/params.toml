@@ -1,0 +1,19 @@
+description = "we are runamuckas flower farm in manchaca, tx!"
+
+loResOpt = "800x webp Lanczos q60"
+hiResOpt = "2500x webp Lanczos q75"
+
+autoOrient = true
+
+favicon = false
+
+[labels]
+next = "next"
+prev = "prev"
+close = "close"
+threshold = "Threshold"
+error = "page not found"
+loading = "loading..."
+
+[analytics]
+enable = false

@@ -1,0 +1,7 @@
+timeout = "1200s"
+baseURL = "https://runamuckas.com/"
+title = "runamuckas flower farm"
+locale = "en-us"
+theme = "bridget"
+disableKinds = ["section", "taxonomy", "term", "home"]
+enableRobotsTXT = true
