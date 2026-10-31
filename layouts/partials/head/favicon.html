@@ -10,17 +10,52 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
   {{- end -}}
 {{- end -}}
-{{- /* put the title above the tabs on phones so both fit */ -}}
+{{- /* JetBrains Mono, sized down because it is wider than the theme's font */ -}}
 <style>
-  @media (max-width: 480px) {
+  @font-face {
+    font-family: 'JetBrains Mono';
+    src: url('{{- "fonts/jetbrains-mono-latin-wght-normal.woff2" | relURL -}}') format('woff2');
+    font-weight: 100 800;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'JetBrains Mono';
+    src: url('{{- "fonts/jetbrains-mono-latin-wght-italic.woff2" | relURL -}}') format('woff2');
+    font-weight: 100 800;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  html body {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  html body nav {
+    font-size: 0.85em;
+  }
+
+  @media (max-width: 1023px) {
+    html body .threshold {
+      display: none;
+    }
+  }
+
+  {{- /* put the title above the tabs on phones so both fit */ -}}
+  @media (max-width: 767px) {
     html:root {
       --nav-height: 60px;
     }
 
-    nav {
+    html body nav {
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
+    }
+
+    html body .links {
+      font-size: min(3.4vw, 14px);
     }
   }
 </style>
