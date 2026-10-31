@@ -1,0 +1,3 @@
+baseURL = "https://example.org/"
+title = "Site Title"
+disableKinds = ["taxonomy", "term", "rss"]

@@ -1,0 +1,23 @@
+{{ define "main" }}
+{{ .Content }}
+{{ with resources.Match "gallery/*.{jpg,jpeg,png,webp}" }}
+<div class="gallery">
+  {{ range $i, $photo := sort . "Name" }}
+    {{ $image := $photo | images.Filter images.AutoOrient }}
+    {{ $thumb := $image.Resize "800x webp q75" }}
+    {{ $full := $image.Fit "2000x2000 webp q80" }}
+    <a href="{{ $full.RelPermalink }}">
+      <img src="{{ $thumb.RelPermalink }}" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}" alt="Photo {{ add $i 1 }}" loading="lazy">
+    </a>
+  {{ end }}
+</div>
+<dialog id="lightbox" aria-label="Photo viewer">
+  <img alt="">
+  <button class="close" aria-label="Close">&times;</button>
+  <button class="prev" aria-label="Previous photo">&lsaquo;</button>
+  <button class="next" aria-label="Next photo">&rsaquo;</button>
+</dialog>
+{{ $js := resources.Get "js/lightbox.js" | minify | fingerprint }}
+<script src="{{ $js.RelPermalink }}" defer></script>
+{{ end }}
+{{ end }}
